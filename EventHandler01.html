@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<input type="button" name="myBtn" id="myBtn" value="button">
+
+<p>
+  <a href="http://baidu.com" id="myA">测试取消连接的点击事件</a>
+</p>
+
+<p>
+  <input type="button" name="" value="button" id="myBtn1">
+  测试stopPropagation()方法，这个方法的作用是阻止事件流
+</p>
+
+<p>
+  <input type="button" name="" value="button" id="myBtn2">
+  测试eventPhase，这个方法的作用是可以显示事件片段
+</p>
+
+<script type="text/javascript">
+  
+  /// 使用event handler 的type设置按钮
+  var button = document.getElementById("myBtn");
+  var handler = function(event) {
+    switch(event.type) {
+      case "click":
+        alert("clicked");3
+        break;
+      case "mouseover":
+        event.target.style.backgroundColor = "red";
+        break;
+      case "mouseout":
+        event.target.style.backgroundColor = "";
+        break;
+    }
+  };
+
+  button.onclick = handler;
+  button.onmouseover = handler;
+  button.onmouseout = handler;
+
+  /// 阻止事件的默认行为
+  var testA = document.getElementById("myA");
+  testA.onclick = function(event) {
+    event.preventDefault();
+  }
+
+  /// stopPropagation()阻止事件流
+  var btn1 = document.getElementById("myBtn1");
+  btn1.onclick = function(event) {
+    alert("btn1 clicked");
+    event.stopPropagation();
+  }
+
+  document.body.onclick = function() {
+    alert("body clicked");
+  }
+
+  /// 使用eventPhase显示事件片段
+  var btn2 = document.getElementById("myBtn2");
+  btn2.onclick = function(event) {
+    alert("btn2 onclick " + event.eventPhase);
+  }
+
+  document.body.addEventListener("click", function(event) {
+    alert("btn2 cap " + event.eventPhase);
+  }, true);
+
+  document.body.onclick = function(event) {
+     alert("btn2 body " + event.eventPhase);
+  }
+
+</script>
+
+
+</body>
+</html>
