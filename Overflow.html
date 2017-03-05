@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8" name="viewport" content="width=device-width"; initial-scale=1.0; maximum-scale=1.0>
+	<style type="text/css">
+		.ellipsis {
+			text-overflow: ellipsis;
+			width: 200px;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.ellipsisBroken1 {
+			text-overflow: ellipsis;
+			width: 200px;
+			/*white-space: nowrap;*/
+			overflow: hidden;
+		}
+
+		.ellipsisBroken2 {
+			text-overflow: ellipsis;
+			width: 200px;
+			white-space: nowrap;
+			/*overflow: hidden;*/
+		}
+
+		/*body {
+			-webkit-border-image: url("https://img6.bdstatic.com/img/image/smallpic/xingkong1488538060.jpg") 10 10 10 10;
+		}*/
+
+		a.baidu {
+			display: block;
+			white-space: 246px;
+			font-family: Helvetica;
+			font-size: 20px;
+			font-weight: bold;
+			color: #999ccc;
+			text-decoration: none;
+			/*rgba表示法中的alpha值不等同于opacity属性，rgba设置的透明度值仅对当前元素有效，而opacity属性值对当前元素及其后代元素均有效*/
+			text-shadow: rgba(155, 255, 255, 0.7) 0 1px 0; 
+			text-align: center;
+			line-height: 36px;
+			margin: 15px auto;
+			-webkit-border-radius: 10px;
+			-webkit-appearance: push-button;
+		}
+	</style>
+</head>
+<body>
+<div class="ellipsis">This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</div>
+<br><br>
+<div class="ellipsisBroken1">This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</div>
+<br><br>
+<div class="ellipsisBroken2">This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.This is a test.</div><br>
+<br>
+
+<a href="http://baidu.com" class="baidu">baidu</a>
+</body>
+</html>
