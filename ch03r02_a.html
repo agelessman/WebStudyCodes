@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    body {
+      font-family: 'Kranky', serif;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 400;
+
+      word-spacing: 0em;
+      line-height: 1.2;
+    }
+
+    html {
+      background-color: #f1f2ce;
+    }
+
+    html, body, #screen {
+      padding: 0;
+      margin: 0;
+    }
+
+    #screen {
+      text-align: center;
+      -moz-transform: rotate(90deg);
+      -webkit-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+
+      background-color: #eee;
+    }
+
+    #screen div {
+      padding-top: 150px;
+    }
+
+    @media screen and (min-width: 401px){
+         #screen {
+           text-align:center;
+           -moz-transform:rotate(0deg);
+           -webkit-transform:rotate(0deg);
+           -o-transform:rotate(0deg);
+           -ms-transform:rotate(0deg);
+         }
+         #screen div {
+           padding-top:70px;
+         }
+}
+  </style>
+
+
+</head>
+<body>
+<div id="screen">
+<div id="loader">enter the game</div>
+</div>
+
+<script type="text/javascript">
+  var meta = document.getElementsByTagName("meta");
+  var i;
+
+  if (navigator.userAgent.match(/iPhone/i)) {
+    for (i = 0; i < meta.length; i++) {
+      if (meta[i].name == "viewport") {
+        meta[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+      }
+    }
+
+    document.addEventListener("gesturestart", gestureStart, false);
+  }
+
+
+  function gestureStart() {
+    for (i = 0; i < meta.length; i++) {
+      if (meta[i].name == "viewport") {
+        meta[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+      }
+    }
+  }
+ 
+</script>
+
+<script type="text/javascript">
+
+window.orientationchange = function() {
+  update();
+}
+
+function update() {
+  switch(window.orientation) {
+    case 0:
+    case 180:
+    var cWidth = window.innerWidth;
+    var cHeight = window.innerHeight;
+    document.getElementById("screen").style.width = cHeight + "px";
+    document.getElementById("screen").style.height = cWidth + "px";
+    break;
+    case -90:
+    case 90:
+     var cWidth = window.innerWidth;
+    var cHeight = window.innerHeight;
+    document.getElementById("screen").style.width = "100%";
+    document.getElementById("screen").style.height = "auto";
+    break;
+  }
+
+}
+update();
+
+  
+</script>
+</body>
+</html>

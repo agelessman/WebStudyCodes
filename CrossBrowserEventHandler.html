@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript">
+    
+    /// 垮浏览器的事件处理
+    var EventUtil = {
+      addHandler: function(element, type, handler) {
+        if (element.addEventListener) {
+          element.addEventListener(type, handler, false);
+        }else if (element.attachEvent) {
+          element.attachEvent("on" + type, handler);
+        }else {
+          element["on + type"] = handler;
+        }
+      },
+
+      removeHandler: function(element, type, handler) {
+        if (element.removeEventListener) {
+          element.removeEventListener(type, handler, false);
+        }else if (element.detachEvent) {
+          element.detachEvent("on" + type, handler);
+        }else {
+          element["on + type"] = null;
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+
+<input type="button" name="button" value="Click Me" id="bt">
+
+<script type="text/javascript">
+  var button = document.getElementById("bt");
+  var handler = function() {
+    alert("HAHA");
+  }
+
+  EventUtil.addHandler(button, "click", handler);
+
+  // EventUtil.removeHandler(button, "click", handler);
+</script>
+
+</body>
+</html>

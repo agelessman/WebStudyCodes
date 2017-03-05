@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <!-- 如果不设置视图的宽度，在iPhone上默认是980 设置后就会设置为320 -->
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" name="apple-mobile-web-app-capable" content="yes">
+
+  <style type="text/css">
+    .noCallout {
+      -webkit-touch-callout: none;
+      -webkit-user-select: text;
+      -webkit-tap-highlight-color: #999999;
+    }
+
+    #targetArea {
+      width: 200px;
+      height: 200px;
+      text-align: center;
+      background-color: #ccc;
+      font-size: 20px;
+      padding-top: 80px;
+    }
+  </style>
+</head>
+<body>
+<form>
+  <label>name1</label><input type="text" name="name1"><br>
+  <label>name2</label><input type="text" name="name2">
+</form>
+
+<div id="targetArea" class="noCallout">
+  <a href="http://baidu.com" target="_blank">百度</a>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+</body>
+</html>
