@@ -26,3 +26,5 @@
 ### 11.文字换行和按钮渐变 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/Overflow.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/Overflow.html)
 
 ### 12.行星围绕太阳转动 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/SubRuning.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/SubRuning.html)
+
+### 13.自动以右击事件 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/ContextMenu.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/ContextMenu.html)

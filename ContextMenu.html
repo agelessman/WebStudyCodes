@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ContextMenu Event Example</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+<div id="myDiv">右击或者使用Ctrl+鼠标左键来显示一个自定义的弹出视图</div>
+<ul id="myMenu" style="position: absolute; visibility: hidden; background-color: silver">
+	<li><a href="http:baidu.com">baidu</a></li>
+	<li><a href="http:zhihu.com">zhihu</a></li>
+	<li><a href="http:zhibo8.com">zhibo8</a></li>
+</ul>
+<br>
+<a href="http://baidu.com" >baidu</a>
+
+
+
+<script type="text/javascript">
+
+	EventUtil.addHandler(window, "load", function(event) {
+		
+		// 获取myDiv
+		var myDiv = document.getElementById("myDiv");
+		// 绑定contextmenu事件
+		EventUtil.addHandler(myDiv, "contextmenu", function(event) {
+			// 阻止系统事件
+			event = EventUtil.getEvent(event);
+			EventUtil.preventDefault(event);
+
+			// 显示自定义内容
+			var menu = document.getElementById("myMenu");
+			menu.style.left = event.clientX + "px";
+			menu.style.top = event.clientY + "px";
+			menu.style.visibility = "visible";
+		});
+
+		EventUtil.addHandler(document, "click", function(event) {
+			document.getElementById("myMenu").style.visibility = "hidden";
+		});
+	});
+
+/// load方法在chrome浏览器中每次都会被调用，也就是pageshow每次都被调用
+	(function() {
+		var showCount = 0;
+
+		EventUtil.addHandler(window, "load", function() {
+			alert(showCount);
+		});
+
+		EventUtil.addHandler(window, "pageshow", function() {
+			showCount++;
+			alert("pageShow" + showCount + "times");
+		});
+	})();
+
+
+</script>
+</body>
+</html>
