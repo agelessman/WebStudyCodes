@@ -28,3 +28,5 @@
 ### 12.行星围绕太阳转动 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/SubRuning.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/SubRuning.html)
 
 ### 13.自动以右击事件 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/ContextMenu.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/ContextMenu.html)
+
+### 14.设备方向,Touch和Gesture事件 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/DeviceEvent.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/DeviceEvent.html)

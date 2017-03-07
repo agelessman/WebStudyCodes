@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ContextMenu Event Example</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="EventUtil.js"></script>
+	<meta charset="utf-8" name="viewport" content="width=device-width; initial-scale=1.0">
+</head>
+<body>
+<div id="myDiv"></div>
+<div id="myDiv1"></div>
+<div id="output"></div>
+<div id="output1"></div>
+<br>
+<a href="http://baidu.com" >baidu</a>
+
+
+
+<script type="text/javascript">
+
+	EventUtil.addHandler(window, "load", function(event) {
+
+		// 获取myDiv
+		var myDiv = document.getElementById("myDiv");
+		myDiv.innerHTML = "Current orientation is " + window.orientation;
+
+		/// 获取当前的屏幕事件
+		EventUtil.addHandler(window, "orientationchange", function() {
+			myDiv.innerHTML = "Current orientation is " + window.orientation;
+		});
+
+		/// Device orientation
+		var myDiv1 = document.getElementById("myDiv1");
+		EventUtil.addHandler(window, "deviceorientation", function(event) {
+			event = EventUtil.getEvent(event);
+			myDiv1.innerHTML = "Alpha=" + event.alpha + ", Beta=" + event.beta + ", Gamma=" + event.gamma;
+		});
+		 
+	});
+
+
+	/// Touch event
+	function handleTouchEvent(event) {
+		if (event.touches.length == 1) {
+			var output = document.getElementById("output");
+			switch (event.type) {
+				case "touchstart":
+					output.innerHTML = "Touch start (" + event.touches[0].clientX + "," + event.touches[0].clientY + ")";
+					break;
+				case "touchend":
+					output.innerHTML = "<br>Touch end (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")";
+					break;
+				case "touchmove":
+					event.preventDefault();
+					output.innerHTML = "<br>Touch moved (" + event.changedTouches[0].clientX + "," + event.changedTouches[0].clientY + ")";
+					break;
+			}
+		}
+	}
+
+	EventUtil.addHandler(document, "touchstart", handleTouchEvent);
+	EventUtil.addHandler(document, "touchend", handleTouchEvent);
+	EventUtil.addHandler(document, "touchmove", handleTouchEvent);
+
+
+/// Gesture event
+	function handleGestureEvent(event) {
+		if (true) {
+			var output = document.getElementById("output1");
+			switch (event.type) {
+				case "gesturestart":
+					output.innerHTML = "Gesture started (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+					break;
+				case "gestureend":
+					output.innerHTML = "Gesture ended (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+					break;
+				case "gesturechange":
+					output.innerHTML = "Gesture changed (rotation=" + event.rotation + ", scale=" + event.scale + ")";
+					break;
+			}
+		}
+	}
+
+	EventUtil.addHandler(document, "gesturestart", handleGestureEvent);
+	EventUtil.addHandler(document, "gestureend", handleGestureEvent);
+	EventUtil.addHandler(document, "gesturechange", handleGestureEvent);
+</script>
+</body>
+</html>
