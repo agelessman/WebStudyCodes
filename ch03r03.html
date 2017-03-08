@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gesture Rotation</title>
+	<meta charset="utf-8" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0">
+	<style type="text/css">
+		#main {
+			text-align: center;
+		}
+
+		#someElm {
+			margin-top: 50px;
+			margin-left: 50px;
+			width: 200px;
+			height: 500px;
+			background: #ccc;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+<div id="main">
+	<div id="someElm">
+		
+	</div>
+</div>
+
+<script type="text/javascript">
+	var rotation =0 ;
+  var node = document.getElementById('someElm');
+  node.ongesturechange = function(e){
+      var node = e.target;
+      node.style.webkitTransform = "rotate(" + e.rotation + "deg)";
+      node.innerHTML = e.rotation;
+  };
+
+	 node.ongestureend = function(e){
+      // Update the values for the next time a gesture happens
+      rotation = (rotation + e.rotation) % 360;
+};
+</script>
+</body>
+</html>
