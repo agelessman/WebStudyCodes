@@ -175,5 +175,12 @@
     alert(serialize(form));
     
 </script>
+
+<iframe name="riceedit" src="SubRuning.html" style="height: 800px; width: 800px;"></iframe>
+<script type="text/javascript">
+    EventUtil.addHandler(window, "load", function(event) {
+        frames["riceedit"].document.designMode = "on";
+    });
+</script>
 </body>
 </html>
