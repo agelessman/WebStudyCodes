@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+<form name="form1">
+    <textarea name="textarea1" rows="3" cols="45">dfafasdadfasd</textarea>
+    <input type="text" name="">
+    <input type="text" name="">
+    <input type="submit" value="submit">
+    <input type="reset" value="reset">
+
+
+<select name=”location” id=”selLocation”>
+    <option value=”Sunnyvale, CA”>Sunnyvale</option>
+    <option value=”Los Angeles, CA”>Los Angeles</option> 
+    <option value=”Mountain View, CA”>Mountain View</option>
+    <option value=””>China</option>
+     <option>Australia</option>
+</select>
+</form>
+<br><br>
+<p>自动切换表单</p>
+<form name="form2">
+	<input type="text" name="tel1" id="txttel1" maxlength="3">
+	<input type="text" name="tel2" id="txttel2" maxlength="3">
+	<input type="text" name="tel3" id="txttel3" maxlength="4">
+</form>
+<p>HTML5</p>
+<form name="form3">
+	<input type="number" min="0" max="100" step="5" name="count">
+</form>
+
+<script type="text/javascript">
+    var form = document.forms['form1'];
+    var textbox = form[1];
+
+    EventUtil.addHandler(textbox, "focus", function(event) {
+    	event = EventUtil.getEvent(event);
+    	var target = EventUtil.getTarget(event);
+
+    	if (target.style.backgroundColor != "red") {
+    		target.style.backgroundColor = "yellow";
+    	}
+    });
+
+    EventUtil.addHandler(textbox, "blur", function(event) {
+    	event = EventUtil.getEvent(event);
+    	var target = EventUtil.getTarget(event);
+    	if (/[^\d]/.test(target.value)) {
+    		target.style.backgroundColor = "red";
+    	}else {
+    		target.style.backgroundColor = "";
+    	}
+    });
+
+     EventUtil.addHandler(textbox, "change", function(event) {
+    	event = EventUtil.getEvent(event);
+    	var target = EventUtil.getTarget(event);
+    	if (/[^\d]/.test(target.value)) {
+    		target.style.backgroundColor = "red";
+    	}else {
+    		target.style.backgroundColor = "";
+    	}
+    });
+
+     var textarea = document.forms[0].elements["textarea1"];
+     textarea.select();
+
+     /// 为了保证输入的是数字，要拦截除了数字之外所有的按键，但是删除，方向键不能禁用，同时要考虑复制等操作
+     EventUtil.addHandler(textbox, "keypress", function(event) {
+     	event = EventUtil.getEvent(event);
+     	var charCode = EventUtil.getCharCode(event);
+     	if (!/\d/.test(String.fromCharCode(charCode)) && charCode > 9 && !event.ctrlKey) {
+     		EventUtil.preventDefault(event);
+     	}
+     });
+
+     EventUtil.addHandler(textbox, "paste", function(event) {
+     	event = EventUtil.getEvent(event);
+     	var text = EventUtil.getClipboardText(event);
+
+     	if (!/^\d*$/.test(text)) {
+     		EventUtil.preventDefault(event);
+     	}
+     });
+
+
+    /// 自动切换表单
+    (function() {
+    	function tabForward(event) {
+    		event = EventUtil.getEvent(event);
+    		var target = EventUtil.getTarget(event);
+    		if (target.value.length == target.maxLength) {
+    			var form = target.form;
+
+    			for (var i = 0, len = form.elements.length; i < len; i++) {
+    				if (form.elements[i] == target) {
+    					if (form.elements[i + 1]) {
+    						form.elements[i + 1].focus();
+    					}
+    					return;
+    				}
+    			}
+    		}
+    	}
+
+    	var text1 = document.getElementById("txttel1");		
+    	var text2 = document.getElementById("txttel2");		
+    	var text3 = document.getElementById("txttel3");		
+
+    	EventUtil.addHandler(text1, "keyup", tabForward);
+    	EventUtil.addHandler(text2, "keyup", tabForward);
+    	EventUtil.addHandler(text3, "keyup", tabForward);
+    })();
+
+    function serialize(form) {
+        var parts = [],
+            field = null,
+            i,
+            len,
+            j,
+            optLen,
+            option,
+            optValue;
+
+        for (i = 0, len = form.elements.length; i < len; i++) {
+            field = form.elements[i];
+
+            switch(field.type) {
+                case "select-one":
+                case "select-multiple":
+                    if (field.name.length) {
+                     
+                        for (j = 0, optLen = field.options.length; j < optLen; j++) {
+                            option = field.options[j];
+                            if (option.selected) {
+                                optValue = "";
+                                /// ie8或者之前的版本是没有hasAttribute这个属性的，因此这里需要做这个判断
+                                if (option.hasAttribute) {
+                                    optValue = (option.hasAttribute("value") ? option.value : option.text);
+                                }else {
+                                    optValue = (option.attributes["value"].specified ? option.value : option.text);
+                                }
+
+                                parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(optValue));
+                            }
+                        }
+                    }
+
+                    break;
+                case undefined:
+                case "file":
+                case "submit":
+                case "reset":
+                case "button":
+                    break;
+                case "radio":
+                case "checkbox":
+                    if (!field.checked) {
+                        break;
+                    }
+                default:
+                    if (field.name.length) {
+                        parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+                    }
+            }
+        }
+        return parts.join('&');
+
+    }
+
+    alert(serialize(form));
+    
+</script>
+</body>
+</html>

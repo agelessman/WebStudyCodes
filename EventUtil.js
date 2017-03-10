@@ -40,6 +40,19 @@
         }
       },
 
+      getClipboardText: function(event) {
+        var clipboardData = (event.clipboardData || window.clipboardData);
+        return clipboardData.getData("text");
+      },
+
+      setClipboardText: function(event, value) {
+        if (event.clipboardData) {
+          event.clipboardData.setData("text/plain", value);
+        }else if (window.clipboardData) {
+          window.clipboardData.setData("text", value);
+        }
+      },
+
       getButton: function(event) {
         if (document.implementation.hasFeature("MouseEvents", "2.0")) {
           return event.button;
