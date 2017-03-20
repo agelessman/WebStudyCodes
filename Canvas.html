@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<canvas id="drawing" width="200" height="200">
+    A drawing of something.
+</canvas>
+<canvas id="drawing1" width="200" height="200">
+    A drawing of something.
+</canvas>
+<canvas id="drawing2" width="200" height="200">
+    A drawing of something.
+</canvas>
+<canvas id="drawing3" width="200" height="200" >
+    A drawing of something.
+</canvas>
+<canvas id="drawing4" width="200" height="200" >
+    A drawing of something.
+</canvas>
+<canvas id="drawing5" width="200" height="200" >
+    A drawing of something.
+</canvas>
+<br>
+<canvas id="drawing6" width="200" height="200" >
+    A drawing of something.
+</canvas>
+
+
+<div>
+    <img src="https://img6.bdstatic.com/img/image/smallpic/222.jpg" id="image1">
+</div>
+<div>
+    <canvas id="drawing7" width="200" height="200" >
+    A drawing of something.
+</canvas>
+
+</div>
+    <img src="eg_tulip.jpg" id="img2">
+    <canvas id="myCanvas" width="500" height="500" >
+    A drawing of something.
+</canvas>
+
+<div>
+    <canvas id="drawing8" width="200" height="200" >
+    A drawing of something.
+</canvas>
+
+<div>
+    <canvas id="drawing9" width="200" height="200" >
+    A drawing of something.
+</canvas>
+
+
+<script type="text/javascript">
+    var drawing = document.getElementById("drawing");
+    if (drawing.getContext) {
+        var imageURL = drawing.toDataURL("image/png");
+        var imgElement = document.createElement("img");
+        imgElement.src = imageURL; 
+        document.body.appendChild(imgElement);  
+    }
+</script>
+
+<script type="text/javascript">
+    var drawing1 = document.getElementById("drawing1");
+    if (drawing1.getContext) {
+        var context = drawing1.getContext("2d");
+        context.strokeStyle = "#0099cc";
+        context.fillStyle = "#000fff";
+        context.fillRect(0,0,80,100);
+     
+    }
+</script>
+
+<script type="text/javascript">
+    var drawing2 = document.getElementById("drawing2");
+    if (drawing2.getContext) {
+        var context = drawing2.getContext("2d");
+        /// red
+        context.fillStyle = "#ff0000";
+        context.fillRect(10,10,50,50);
+
+        context.fillStyle = "rgba(0, 0, 255, 0.5)";
+        context.fillRect(13,30,50,50);
+     
+    }
+</script>
+
+<script type="text/javascript">
+    var drawing3 = document.getElementById("drawing3");
+    if (drawing3.getContext) {
+        var context = drawing3.getContext("2d");
+        /// red
+        context.strokeStyle = "#ff0000";
+        context.strokeRect(10,10,120,120);
+
+        context.lineWidth = 5;
+        // context.lineCap = "round";
+        context.lineJoin = "bevel";
+
+        context.strokeStyle = "rgba(0, 0, 255, 0.5)";
+        context.strokeRect(30,30,120,120);
+     
+    }
+</script>
+
+<script type="text/javascript">
+    var drawing4 = document.getElementById("drawing4");
+    if (drawing4.getContext) {
+        var context = drawing4.getContext("2d");
+        /// red
+        context.fillStyle = "#ff0000";
+        context.fillRect(10,10,50,50);
+
+        context.fillStyle = "rgba(0, 0, 255, 0.5)";
+        context.fillRect(13,30,50,50);
+     
+        context.clearRect(40, 40, 10, 10);
+    }
+</script>
+
+<script type="text/javascript">
+    var drawing5 = document.getElementById("drawing5");
+    if (drawing5.getContext) {
+        var context = drawing5.getContext("2d");
+
+        context.strokeStyle = "#0099cc";
+        context.beginPath();
+        /// 画外边的圆
+        context.arc(100, 100, 99, 2 * Math.PI, false);
+        /// 画内圆
+        context.moveTo(194, 100);
+        context.arc(100, 100, 94, 2 * Math.PI, false);
+        /// 画时针，指向九点
+        context.moveTo(100, 100);
+        context.lineTo(50, 100);
+        /// 画分针，指向12点
+        context.moveTo(100, 100);
+        context.lineTo(100, 30);
+
+        context.stroke();
+
+        context.font = "bold 14px Arial";
+        context.textAlign = "center";
+        context.textBaseLine = "middle";
+        context.fillText("12", 100, 25);
+        context.textAlign = "end";
+        context.fillText("03", 200 - 17, 104);
+        context.textAlign = "center";
+        context.fillText("06", 100, 200 - 17);
+        context.textAlign = "start";
+        context.fillText("09", 17, 104);
+    }
+</script>
+
+<script type="text/javascript">
+    var drawing6 = document.getElementById("drawing6");
+    if (drawing6.getContext) {
+        var context = drawing6.getContext("2d");
+        /// red
+        context.fillStyle = "#ff0000";
+        context.save();
+        context.fillStyle = "rgba(0, 0, 255, 0.5)";
+        context.save();
+
+        context.fillStyle = "rgba(255, 0, 255, 0.5)";
+        context.fillRect(10,10,50,50);
+
+        context.restore();
+        context.fillRect(13,30,50,50);
+     
+        context.restore();
+        context.fillRect(63,60,50,50);
+    }
+</script>
+
+<script type="text/javascript">
+    
+     var drawing7 = document.getElementById("drawing7");
+    if (drawing7.getContext) {
+        var context = drawing7.getContext("2d");
+     var img = document.images[0];
+        context.shadowOffsetX = 5;
+        context.shadowOffsetY = 5;
+        context.shadowBlur = 10;
+        context.shadowColor = "rgba(0, 0, 0, 0.5)";
+     /// 在原图上剪切下来一定大小的图片然后画到canvas之中
+        context.drawImage(img, 10, 10, 50, 50, 20, 20, 50, 50);
+
+        /// 使用渐变
+        var gradient = context.createLinearGradient(100, 100, 200, 200);
+        gradient.addColorStop(0, "white");
+        gradient.addColorStop(1, "black");
+
+        context.fillStyle = gradient;
+        context.fillRect(100, 100, 100, 100);
+
+        var radialGradient = context.createRadialGradient(50, 150, 30, 50, 150, 50);
+        radialGradient.addColorStop(0, "white");
+        radialGradient.addColorStop(1, "black");
+
+        context.fillStyle = radialGradient;
+        context.fillRect(0, 100, 100, 100);
+    }
+</script>
+
+<script type="text/javascript">
+    var c=document.getElementById("myCanvas");
+var ctx=c.getContext("2d");
+var img=document.getElementById("img2");
+img.onload = function() {
+    ctx.drawImage(img,0,0);
+
+var imgData=ctx.getImageData(0,0,c.width,c.height);
+alert("ddd");
+// 反转颜色
+for (var i=0;i<imgData.data.length;i+=4)
+  {
+alert("ddd");
+   imgData.data[i]=255-imgData.data[i];
+  imgData.data[i+1]=255-imgData.data[i+1];
+  imgData.data[i+2]=255-imgData.data[i+2];
+  imgData.data[i+3]=255;
+  }
+ctx.putImageData(imgData,0,0);
+}
+
+</script>
+
+<script type="text/javascript">
+    
+     var drawing8 = document.getElementById("drawing8");
+    if (drawing8.getContext) {
+        var context = drawing8.getContext("2d");
+    
+        context.fillStyle = "#ff0000";
+        context.fillRect(10, 10, 50, 50);
+
+        context.globalAlpha = 0.5;
+        context.fillStyle = "rgba(0, 0, 255, 1)";
+        context.fillRect(30, 30, 50, 50);
+
+        context.globalAlpha = 0;
+    }
+</script>
+
+
+<script type="text/javascript">
+    
+     var drawing9 = document.getElementById("drawing9");
+    if (drawing9.getContext) {
+        var context = drawing9.getContext("2d");
+    
+        context.fillStyle = "#ff0000";
+        context.fillRect(10, 10, 50, 50);
+
+        context.globalCompositeOperation = "destination-over";
+        context.fillStyle = "rgba(0, 0, 255, 1)";
+        context.fillRect(30, 30, 50, 50);
+
+    }
+</script>
+</body>
+</html>
