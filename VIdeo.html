@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Media</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+
+<div class="mediaplayer">
+    <div class="video">
+        <video id="player" src="http://mvideo.spriteapp.cn/video/2017/0319/9ec94568-0c86-11e7-9fff-d4ae5296039d_wpcco.mp4" poster="http://mpic.spriteapp.cn/crop/566x360/picture/2017/0319/9ec94568-0c86-11e7-9fff-d4ae5296039d_wpd.jpg" width="300" height="200">
+            Video player not available.
+        </video>
+    </div>
+
+    <div class="controls">
+        <input type="button" value="Play" id="video-btn">
+        <span id="currentTime">0</span>  --  <span id="duration">0</span>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var player = document.getElementById("player");
+    var playBtn = document.getElementById("video-btn");
+    var currentTime = document.getElementById("currentTime");
+    var duration = document.getElementById("duration");
+
+    /*设置duration*/
+    duration.innerHTML = player.duration;
+
+    /*设置播放按钮的监听事件*/
+    EventUtil.addHandler(playBtn, "click", function(event) {
+        if (player.paused) {
+            player.play();
+            playBtn.value = "Pause";
+        }else {
+            player.pause();
+            playBtn.value = "Play";
+        }
+    });
+
+    /*跟新当前的播放时间*/
+    setInterval(function() {
+        currentTime.innerHTML = player.currentTime;
+        duration.innerHTML = player.duration;
+    }, 250);
+</script>
+</body>
+</html>

@@ -36,3 +36,5 @@
 ### 16.表单的各种处理效果 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/Forms.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/Forms.html)
 
 ### 17.Canvas元素画图 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/Canvas.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/Canvas.html)
+
+### 18.Audio/video [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/Video.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/Video.html)
