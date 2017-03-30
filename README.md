@@ -38,3 +38,8 @@
 ### 17.Canvas元素画图 [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/Canvas.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/Canvas.html)
 
 ### 18.Audio/video [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/video副本.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/video副本.html)
+
+### 19.Error type [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/Error.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/Error.html)
+
+
+### 20.Debug log [效果图](http://htmlpreview.github.com/?https://github.com/agelessman/WebStudyCodes/blob/master/Debug.html)  ----- [代码](https://github.com/agelessman/WebStudyCodes/blob/master/Debug.html)

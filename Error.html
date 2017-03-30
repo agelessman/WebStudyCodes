@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+    /// type error
+    try {
+        document.abcd("dd");
+    }catch(error) {
+        alert("message: " + error.message + "\n name: " + error.name);
+    }
+
+    /// eval error
+    try {
+        new eval();
+    }catch(error) {
+        alert("message: " + error.message + "\n name: " + error.name);
+    }
+
+    /// range error
+    try {
+        var items = new Array(-29);
+    }catch(error) {
+        alert("message: " + error.message + "\n name: " + error.name);
+    }
+
+    /// reference error
+    try {
+        var items = abc;
+    }catch(error) {
+        alert("message: " + error.message + "\n name: " + error.name);
+    }
+
+    /// syntax error
+    try {
+        eval("a ++ b");
+    }catch(error) {
+        alert("message: " + error.message + "\n name: " + error.name);
+    }
+
+
+    /// throw error
+    try {
+        throw  new Error("I am error.");
+    }catch(error) {
+        alert("message: " + error.message + "\n name: " + error.name);
+    }
+
+    /// throw custom error
+    try {
+        function CustomError(message) {
+            this.name = "CustomError";
+            this.message = message;
+        }
+        CustomError.prototype = new Error();
+
+        throw  new CustomError("I am custom error.");
+    }catch(error) {
+        alert("message: " + error.message + "\n name: " + error.name);
+    }
+</script>
+</body>
+</html>
