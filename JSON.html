@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    
+    /*A book object*/
+    var book = {
+        title: "iOS cool book",
+        authors: [
+            "Ma Chao"
+        ],
+        edition: 3,
+        year: 2017
+    };
+
+    /*Serialize book to JSON string*/
+    var josnTxt = JSON.stringify(book);
+    alert(josnTxt);
+
+    /*Parse JSON string to object*/
+    var bookObj = JSON.parse(josnTxt);
+    alert(bookObj.title);
+
+    /*Parse JSON string to a simila object*/
+    var book1 = {
+        title: "iOS cool book",
+        year: 2017
+    };
+    var josnTxt1 = JSON.stringify(book1);
+    var bookObj1 = JSON.parse(josnTxt1);
+    alert(bookObj1.title);
+
+    /*Indentation*/
+    var indentationTxt = JSON.stringify(book, null, 4);
+    alert(indentationTxt);
+
+    var indentationTxt1 = JSON.stringify(book, null, "---");
+    alert(indentationTxt1);
+
+    /*Show the parse option*/
+    var book3 = {
+        title: "iOS cool book",
+        authors: [
+            "Ma Chao"
+        ],
+        edition: 3,
+        year: 2017,
+        releaseDate: new Date(2014, 4, 1)
+    };
+    var book3JsonString = JSON.stringify(book3);
+
+    var parsedBook3Obj = JSON.parse(book3JsonString, function(key, value) {
+        if (key == "releaseDate") {
+            return new Date();
+        } else {
+            return value;
+        }
+    });
+    alert(parsedBook3Obj.releaseDate.getFullYear());
+</script>
+</body>
+</html>
